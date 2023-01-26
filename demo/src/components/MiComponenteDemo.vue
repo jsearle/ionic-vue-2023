@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Bienvenid@s a VUE!</h1>
+    <h1>{{title}}</h1>
+    <h3>Bienvenid@s a VUE!</h3>
   </div>
 </template>
 
@@ -10,7 +11,8 @@ import {defineComponent} from 'vue'
 export default defineComponent({
   name: 'MiComponenteDemo',
   components: {
-  }
+  },
+  props:['title']
 })
 
 </script>

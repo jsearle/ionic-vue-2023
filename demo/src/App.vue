@@ -1,19 +1,32 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
-    <MiComponenteDemo />
-    <MiComponenteDemo />
+    <p>Nombre: {{nombre}}</p>
+    <p>Número: {{numero}}</p>
+    <MiComponenteDemo title="Título primero" />
+    <button @click="modificarTexto()">Modificar texto</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 import MiComponenteDemo from './components/MiComponenteDemo.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    'MiComponenteDemo' : MiComponenteDemo
+    MiComponenteDemo
+  },
+  data: function(){
+    return {
+      nombre: 'Juan Searle',
+      numero: 54
+    }
+  },
+  methods: {
+    modificarTexto(){
+      this.nombre = this.nombre + ' Edad: ' + this.numero
+    }
   }
 });
 </script>
