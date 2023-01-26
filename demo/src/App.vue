@@ -3,8 +3,11 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <p>Nombre: {{nombre}}</p>
     <p>Número: {{numero}}</p>
+    <p>Nombre completo: {{nombreCompleto}}</p>
     <MiComponenteDemo title="Título primero" />
     <button @click="modificarTexto()">Modificar texto</button>
+    {{ nombreMayúsculas }} {{edadHace20Anyos}}
+    {{ nombreMayúsculasFunc() }}
   </div>
 </template>
 
@@ -19,13 +22,28 @@ export default defineComponent({
   },
   data: function(){
     return {
-      nombre: 'Juan Searle',
+      nombre: 'Juan',
+      apellido: 'Searle',
       numero: 54
     }
   },
   methods: {
     modificarTexto(){
       this.nombre = this.nombre + ' Edad: ' + this.numero
+    },
+    nombreMayúsculasFunc() : string {
+      return  this.nombre.toUpperCase()
+    }
+  },
+  computed: {
+    nombreCompleto() : string {
+      return this.nombre + ' ' + this.apellido
+    },
+    nombreMayúsculas() : string{
+      return  this.nombre.toUpperCase()
+    },
+    edadHace20Anyos(): number{
+      return this.numero - 20
     }
   }
 });
