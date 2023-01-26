@@ -4,10 +4,16 @@
     <p>Nombre: {{nombre}}</p>
     <p>Número: {{numero}}</p>
     <p>Nombre completo: {{nombreCompleto}}</p>
-    <MiComponenteDemo title="Título primero" />
+    <MiComponenteDemo title="Título primero" @contador="contadorTres" />
     <button @click="modificarTexto()">Modificar texto</button>
     {{ nombreMayúsculas }} {{edadHace20Anyos}}
     {{ nombreMayúsculasFunc() }}
+    {{alumnos}} {{fichaAlumno}}
+    <div>
+      <p>Nombre: {{fichaAlumno.nombre}}</p>
+      <p>Edad: {{fichaAlumno.edad}}</p>
+      <p>Nota: {{fichaAlumno.nota}}</p>
+    </div>
   </div>
 </template>
 
@@ -24,15 +30,21 @@ export default defineComponent({
     return {
       nombre: 'Juan',
       apellido: 'Searle',
-      numero: 54
+      numero: 54,
+      alumnos: ['Juan', 'Pedro', 'Luis'],
+      fichaAlumno: {nombre:'Juan', edad:45, nota:4.5 } as any // usamos any para dejar algo sin tipar
     }
   },
   methods: {
     modificarTexto(){
       this.nombre = this.nombre + ' Edad: ' + this.numero
+      this.fichaAlumno.edad = 'mucha'
     },
     nombreMayúsculasFunc() : string {
       return  this.nombre.toUpperCase()
+    },
+    contadorTres(nuevoNumero : number){
+      alert("Dice el componente hijo que el contador es ahora " + nuevoNumero)
     }
   },
   computed: {
