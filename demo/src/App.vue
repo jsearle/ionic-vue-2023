@@ -14,17 +14,20 @@
       <p>Edad: {{fichaAlumno.edad}}</p>
       <p>Nota: {{fichaAlumno.nota}}</p>
     </div>
+    <SimpleComponent subtitulo="Este texto es el subtítulo" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import MiComponenteDemo from './components/MiComponenteDemo.vue';
+import SimpleComponent from './components/SimpleComponent.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    MiComponenteDemo
+    MiComponenteDemo,
+    SimpleComponent
   },
   data: function(){
     return {
