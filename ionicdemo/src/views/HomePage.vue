@@ -19,6 +19,8 @@
           <ion-button @click="()=>router.push('/new')">Ir a la nueva página</ion-button>
           <ion-button href="/dos">Ir a la segunda página</ion-button>
           <MyButton texto="Mi texto del botón" />
+
+          <ion-button href="/form" size="large" expand="block">Formulario</ion-button>
         </p>
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>

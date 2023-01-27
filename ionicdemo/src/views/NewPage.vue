@@ -32,10 +32,34 @@
         <ion-list-header>Título</ion-list-header>
         <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/dos')">
           <ion-avatar slot="start">
-            <img src="https://thispersondoesnotexist.com/image" alt="">
+            <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
           </ion-avatar>
           <ion-label>{{fruta}}</ion-label>
         </ion-item>
+        <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/dos')">
+          <ion-thumbnail slot="start">
+            <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
+          </ion-thumbnail>
+          <ion-label>{{fruta}}</ion-label>
+          <ion-thumbnail slot="end">
+            <ion-button fill="clear" color="warning">
+              <ion-icon :icon="basketballOutline" slot="icon-only" />
+            </ion-button>
+          </ion-thumbnail>
+        </ion-item>
+        <ion-item-sliding>
+          <ion-item :button="true" @click="()=>router.push('/dos')">
+            <ion-thumbnail slot="start">
+              <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
+            </ion-thumbnail>
+            <ion-label>Este es el elemento "Sliding"</ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="danger">
+              <ion-icon :icon="trashOutline" slot="icon-only" />
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-list>
       <ion-button>Botón</ion-button>
     </ion-content>
@@ -62,10 +86,17 @@ import {
   IonListHeader,
   IonItem,
   IonLabel,
-  IonAvatar
+  IonAvatar,
+  IonThumbnail,
+  IonImg,
+  IonItemSliding,
+  IonItemOptions,
+  IonItemOption,
+  IonIcon
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { useRouter } from 'vue-router'
+import { trashOutline, basketballOutline } from 'ionicons/icons'
 
 export default defineComponent({
   name: "SecondPage",
@@ -88,7 +119,13 @@ export default defineComponent({
     IonListHeader,
     IonItem,
     IonLabel,
-    IonAvatar
+    IonAvatar,
+    IonThumbnail,
+    IonImg,
+    IonItemSliding,
+    IonItemOptions,
+    IonItemOption,
+    IonIcon
   },
   data(){
     return{
@@ -103,7 +140,9 @@ export default defineComponent({
   setup(){
     const router = useRouter()
     return {
-      router
+      router,
+      trashOutline,
+      basketballOutline
     }
   }
 });
