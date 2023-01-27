@@ -1,41 +1,60 @@
 <template>
   <div :class="classColor">
+    <h3>{{reactiveText}}</h3>
     <h1>Este es un componente sencillo</h1>
     <p>{{ subtitulo }}</p>
     <button @click="toggleColor()">Cambiar color</button>
+    {{userData}}
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, reactive } from 'vue'
 
 export default defineComponent({
   name: 'SimpleComponent',
   props: ['subtitulo'],
+  emits:['llamada'],
   components: {
   },
-  data: function(){
+  data(){
     return {
-      classColor: 'red'
+      classColor: 'red',
     }
   },
   methods: {
     toggleColor(){
       if (this.classColor === 'red'){
         this.classColor = 'blue'
+        this.setReactiveText( 'Otro texto' )
       } else {
         this.classColor = 'red'
+        this.setReactiveText('Un texto')
       }
+      //this.$emit('llamada')
     }
   },
   computed: {
   },
   watch: {
   },
-  mounted: function(){
-    // TODO: create something here
+  mounted(){
+    console.log('Mounted!')
   },
+  inject:['userData'],
+  setup(){
+    const reactiveText = ref('este texto es reactivo')
+    const reactiveObject = reactive({texto:'texto', numero:23})
 
+    const setReactiveText = (nuevoTexto:string) => {
+      reactiveText.value = nuevoTexto
+    }
+    return {
+      reactiveText,
+      reactiveObject,
+      setReactiveText
+    }
+  }
 })
 </script>
 

@@ -14,12 +14,12 @@
       <p>Edad: {{fichaAlumno.edad}}</p>
       <p>Nota: {{fichaAlumno.nota}}</p>
     </div>
-    <SimpleComponent subtitulo="Este texto es el subtítulo" />
+    <SimpleComponent subtitulo="Este texto es el subtítulo" @llamada="llamadaDesdeComponenteHijo()"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import MiComponenteDemo from './components/MiComponenteDemo.vue';
 import SimpleComponent from './components/SimpleComponent.vue';
 
@@ -48,6 +48,9 @@ export default defineComponent({
     },
     contadorTres(nuevoNumero : number){
       alert("Dice el componente hijo que el contador es ahora " + nuevoNumero)
+    },
+    llamadaDesdeComponenteHijo(){
+      alert("Llamada desde el componente hijo")
     }
   },
   computed: {
@@ -59,6 +62,11 @@ export default defineComponent({
     },
     edadHace20Anyos(): number{
       return this.numero - 20
+    }
+  },
+  provide(){
+    return {
+      userData: computed(() => this.fichaAlumno) 
     }
   }
 });
