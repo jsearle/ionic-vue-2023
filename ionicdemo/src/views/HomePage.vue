@@ -14,6 +14,11 @@
       </ion-header>
 
       <div id="container">
+        <p>
+          <ion-button @click="()=>router.push('/dos')">Ir a la segunda página</ion-button>
+          <ion-button @click="ir()">Ir a la segunda página</ion-button>
+          <ion-button href="/dos">Ir a la segunda página</ion-button>
+        </p>
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
       </div>
@@ -21,8 +26,28 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+<script lang="ts">
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default defineComponent({
+  name: 'HomePage',
+  components: { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton },
+  setup(){
+    const router = useRouter()
+    return {
+      router
+    }
+  },
+  methods:{
+    ir(){
+      this.router.push('/dos')
+    }
+  }
+
+})
+
 </script>
 
 <style scoped>
