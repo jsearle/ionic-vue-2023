@@ -16,8 +16,9 @@
       <div id="container">
         <p>
           <ion-button @click="()=>router.push('/dos')">Ir a la segunda página</ion-button>
-          <ion-button @click="ir()">Ir a la segunda página</ion-button>
+          <ion-button @click="()=>router.push('/new')">Ir a la nueva página</ion-button>
           <ion-button href="/dos">Ir a la segunda página</ion-button>
+          <MyButton texto="Mi texto del botón" />
         </p>
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
@@ -30,10 +31,11 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
 import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
+import MyButton from './MyButton.vue'
 
 export default defineComponent({
   name: 'HomePage',
-  components: { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton },
+  components: { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, MyButton },
   setup(){
     const router = useRouter()
     return {
