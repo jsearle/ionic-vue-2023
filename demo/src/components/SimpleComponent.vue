@@ -1,5 +1,6 @@
 <template>
   <div :class="classColor">
+    <h1>{{mousePosition.x}}, {{mousePosition.y}}</h1>
     <h3>{{reactiveText}}</h3>
     <h1>Este es un componente sencillo</h1>
     <p>{{ subtitulo }}</p>
@@ -10,6 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
+import useMouse from '../composables/useMouse'
 
 export default defineComponent({
   name: 'SimpleComponent',
@@ -43,6 +45,7 @@ export default defineComponent({
   },
   inject:['userData'],
   setup(){
+    const mousePosition = useMouse()
     const reactiveText = ref('este texto es reactivo')
     const reactiveObject = reactive({texto:'texto', numero:23})
 
@@ -52,7 +55,8 @@ export default defineComponent({
     return {
       reactiveText,
       reactiveObject,
-      setReactiveText
+      setReactiveText,
+      mousePosition
     }
   }
 })

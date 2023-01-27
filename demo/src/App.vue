@@ -1,6 +1,7 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
+    {{mouse}}
     <p>Nombre: {{nombre}}</p>
     <p>Número: {{numero}}</p>
     <p>Nombre completo: {{nombreCompleto}}</p>
@@ -22,6 +23,7 @@
 import { defineComponent, computed } from 'vue'
 import MiComponenteDemo from './components/MiComponenteDemo.vue';
 import SimpleComponent from './components/SimpleComponent.vue';
+import useMouse from './composables/useMouse'
 
 export default defineComponent({
   name: 'App',
@@ -67,6 +69,12 @@ export default defineComponent({
   provide(){
     return {
       userData: computed(() => this.fichaAlumno) 
+    }
+  },
+  setup(){
+    const mouse = useMouse()
+    return {
+      mouse
     }
   }
 });
