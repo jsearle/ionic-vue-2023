@@ -2,7 +2,14 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <!-- ion-buttons carga un espacio para poner botones -->
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
         <ion-title>Listado de usuarios</ion-title>
+        <ion-buttons slot="end">
+          <ion-button @click="loginVisible = true">Login</ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -29,6 +36,30 @@
       <ion-button expand="block" size="large" @click="loadUsers()">Cargar usuarios</ion-button>
       <!-- este componente indica al usuario un proceso de carga de foma intrusiva -->
       <ion-loading v-if="api.isLoading.value" message="Cargando usuarios" :backdrop-dismiss="true"></ion-loading>
+
+    <!-- Creación de una modal para el login -->
+    <ion-modal :is-open="loginVisible" :breakpoints="[0, 0.8]" :initialBreakpoint="0.8" @didDismiss="loginVisible = false">
+      <ion-content>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Login</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <ion-button expand="block" size="large">Login</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-content>
+    </ion-modal>
+
+
     </ion-content>
   </ion-page>
 </template>
@@ -50,7 +81,13 @@ import {
   IonSpinner,
   IonCard,
   IonCardContent,
-  IonLoading
+  IonLoading,
+  IonButtons,
+  IonMenuButton,
+  IonModal,
+  IonInput,
+  IonCardTitle,
+  IonCardHeader
 } from "@ionic/vue";
 
 // importamos la función para definir un componente en TS
@@ -79,12 +116,19 @@ export default defineComponent({
     IonSpinner,
     IonCard,
     IonCardContent,
-    IonLoading
+    IonLoading,
+    IonButtons,
+    IonMenuButton,
+    IonModal,
+    IonInput,
+    IonCardTitle,
+    IonCardHeader
   },
   // definimos las variables de estado (reactivas) de este componente
   data(){
     return {
-      users: [] as any[]
+      users: [] as any[],
+      loginVisible: false
     }
   },
   // definimos los métodos que serán llamados desde la plantilla
