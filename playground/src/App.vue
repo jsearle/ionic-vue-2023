@@ -66,6 +66,12 @@ import {
 const selectedIndex = ref(0);
 const appPages = [
   {
+    title: 'Lista de usuarios',
+    url: '/users-list',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp,
+  },
+  {
     title: 'Inbox',
     url: '/folder/Inbox',
     iosIcon: mailOutline,
