@@ -6,7 +6,15 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
+      <!-- condicionamos la existencia del card a que la variable de estado del composable isLoading sea true -->
+      <ion-card v-if="api.isLoading.value">
+        <ion-card-content>
+          <!-- este componente indica al usuario un proceso de carga de foma no intrusiva -->
+          <ion-spinner ></ion-spinner>
+        </ion-card-content>
+      </ion-card>
+      <!-- en caso de que no este cargando, mostramos la lista -->
+      <ion-list v-else>
         <!-- las variables de estado en la plantilla se acceden directamente (sin "this.")  -->
         <ion-item v-for="user in users" :key="user.id">
           <ion-avatar slot="start">
@@ -19,6 +27,8 @@
         </ion-item>
       </ion-list>
       <ion-button expand="block" size="large" @click="loadUsers()">Cargar usuarios</ion-button>
+      <!-- este componente indica al usuario un proceso de carga de foma intrusiva -->
+      <ion-loading v-if="api.isLoading.value" message="Cargando usuarios" :backdrop-dismiss="true"></ion-loading>
     </ion-content>
   </ion-page>
 </template>
@@ -36,7 +46,11 @@ import {
   IonItem,
   IonButton,
   IonAvatar,
-  IonImg
+  IonImg,
+  IonSpinner,
+  IonCard,
+  IonCardContent,
+  IonLoading
 } from "@ionic/vue";
 
 // importamos la función para definir un componente en TS
@@ -61,7 +75,11 @@ export default defineComponent({
     IonItem,
     IonButton,
     IonAvatar,
-    IonImg
+    IonImg,
+    IonSpinner,
+    IonCard,
+    IonCardContent,
+    IonLoading
   },
   // definimos las variables de estado (reactivas) de este componente
   data(){
@@ -84,4 +102,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+ion-card-content{
+  text-align: center;
+}
+
+</style>
