@@ -32,7 +32,14 @@ export default function useAPI(){
 
   const loginUser = async (email:string, clave:string) => {
     const body = JSON.stringify({email:email, password:clave})
-    const response = await fetch(API_USER_LOGIN, {method: 'POST', body:body}).then(result => result.json())
+    const response = await fetch(API_USER_LOGIN, 
+      {method: 'POST',
+      headers:{
+        // Gracias Jorge por el input!! 
+        'Accept': 'application/JSON',
+        'Content-type':'application/json'
+      },
+      body:body}).then(result => result.json())
     return response
   }
   
