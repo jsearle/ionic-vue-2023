@@ -29,11 +29,18 @@ export default function useAPI(){
     // devolvemos la lista de usuarios
     return list
   }
+
+  const loginUser = async (email:string, clave:string) => {
+    const body = JSON.stringify({email:email, password:clave})
+    const response = await fetch(API_USER_LOGIN, {method: 'POST', body:body}).then(result => result.json())
+    return response
+  }
   
 
   // respuesta del composable: funciones y variables reactivas
   return {
     loadUserList,
-    isLoading
+    isLoading,
+    loginUser
   }
 }

@@ -45,15 +45,28 @@
             <ion-card-title>Login</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="email"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"></ion-input>
-            </ion-item>
-            <ion-button expand="block" size="large">Login</ion-button>
+            <!-- Vee-Validate espera tener todos sus componentes dentro de una etiqueta <VForm> -->
+            <VForm :initial-values="formData" v-slot="{values, errors}" @submit="enviar">
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <!-- rodeamos los ion-input con un vee-field (VField) para controlar los atributos -->
+                <VField name="email" v-slot="{field}" :rules="esEmail">
+                  <ion-input v-bind="field"></ion-input>
+                </VField>
+                <!-- Ponemos el error donde queramos que se presente y usamos el atributo "name" para enlazarlo -->
+                <strong><VErrorMessage name="email" class="error" /></strong>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <VField name="clave" v-slot="{field}" :rules="noVacio">
+                  <ion-input type="password" v-bind="field"></ion-input>
+                </VField>
+                <VErrorMessage name="clave" class="error" />
+              </ion-item>
+              <ion-button type="submit" expand="block" size="large">Login</ion-button>
+              <p>{{ values }}</p>
+              <p>{{ errors }}</p>
+            </VForm>
           </ion-card-content>
         </ion-card>
       </ion-content>
@@ -87,7 +100,8 @@ import {
   IonModal,
   IonInput,
   IonCardTitle,
-  IonCardHeader
+  IonCardHeader,
+  alertController
 } from "@ionic/vue";
 
 // importamos la función para definir un componente en TS
@@ -95,6 +109,8 @@ import { defineComponent } from "vue";
 
 // importamos nuestra composable function
 import useAPI from "../composables/useAPI";
+
+import { Form, Field, ErrorMessage } from 'vee-validate'
 
 // definimos el componente
 export default defineComponent({
@@ -122,13 +138,20 @@ export default defineComponent({
     IonModal,
     IonInput,
     IonCardTitle,
-    IonCardHeader
+    IonCardHeader,
+    VForm : Form,
+    VField : Field,
+    VErrorMessage : ErrorMessage
   },
   // definimos las variables de estado (reactivas) de este componente
   data(){
     return {
       users: [] as any[],
-      loginVisible: false
+      loginVisible: false,
+      formData: {
+        email: '',
+        clave: ''
+      }
     }
   },
   // definimos los métodos que serán llamados desde la plantilla
@@ -136,6 +159,35 @@ export default defineComponent({
     async loadUsers(){
       // siempre usamos this dentro de los métodos para acceder a varaibles o a otros métodos del componente
       this.users = await this.api.loadUserList()
+    },
+    // las reglas de vee-validate devielven true o un literal con la descripción del error
+    esEmail(valor:string): boolean | string {
+      if (valor.indexOf('@')!=-1) {
+        return true
+      }
+      return 'Este campo no parece un email'
+    },
+    // las reglas de vee-validate devuelven true o un literal con la descripción del error
+    noVacio(valor:string): boolean | string {
+      if (valor.length > 0) {
+        return true
+      }
+      return 'Este campo tiene que contener al menos un caracter'
+    },
+    async enviar(datos:any) {
+      console.log("Datos a enviar", datos)
+      const respuestaApi = await this.api.loginUser(datos.email, datos.clave)
+      console.log(respuestaApi)
+      if (respuestaApi.error){
+        // usamos el alertController para seguir en el paradigma de Ionic
+        const miAlerta = await alertController.create({
+          header:'Error de acceso',
+          message: respuestaApi.error,
+          buttons:['De acuerdo']
+        })
+        // una vez definida la alerta, la mostramos
+        miAlerta.present()
+      }
     }
   },
   // montamos las instancias de las composable functions
@@ -150,5 +202,9 @@ export default defineComponent({
 ion-card-content{
   text-align: center;
 }
-
+.error{
+  color:red;
+  font-style: italic;
+  font-size: 12px;
+}
 </style>
