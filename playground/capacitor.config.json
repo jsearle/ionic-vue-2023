@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "playground",
+	"appId": "es.fullcircle.playground",
+	"appName": "Playground",
 	"webDir": "dist",
 	"bundledWebRuntime": false
 }

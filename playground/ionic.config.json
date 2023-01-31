@@ -1,7 +1,8 @@
 {
-  "name": "playground",
+  "name": "Playground",
   "integrations": {
     "capacitor": {}
   },
-  "type": "vue"
+  "type": "vue",
+  "id": "es.fullcircle.playground"
 }

@@ -72,6 +72,12 @@ const appPages = [
     mdIcon: mailSharp,
   },
   {
+    title: 'Preferencias / Storage',
+    url: '/preferences',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneSharp,
+  },
+  {
     title: 'Inbox',
     url: '/folder/Inbox',
     iosIcon: mailOutline,
