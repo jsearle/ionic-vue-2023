@@ -95,10 +95,22 @@ export default defineComponent({
   },
   // TODO: Revisar por qué no salta el watch
   watch:{
-    preferences (newData:any) {
-        this.name = newData.prefs.name
-        this.email = newData.prefs.email
-        this.token = newData.prefs.token
+    // declaración directa sólo observa una propiedad
+    'preferences.prefs.name' (newData:any) {
+        this.name = newData
+    },
+    'preferences.prefs.email' (newData:any) {
+        this.email = newData
+    },
+    'preferences.prefs.token' (newData:any) {
+        this.token = newData
+    },
+    // si queremos observar un objeto y sus propiedades, usamos un objeto con { handler, deep } siendo deep: true
+    'preferences.prefs':{
+      handler (newData:any) {
+          console.log("Cambio profundo", newData)
+      },
+      deep: true
     }
   },
   setup() {
