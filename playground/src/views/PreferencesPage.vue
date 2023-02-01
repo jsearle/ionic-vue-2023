@@ -110,6 +110,7 @@ export default defineComponent({
       handler (newData:any) {
           console.log("Cambio profundo", newData)
       },
+      // deep true indica que queremos observar todas las props
       deep: true
     }
   },

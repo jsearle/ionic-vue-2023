@@ -15,14 +15,6 @@
             </ion-menu-toggle>
           </ion-list>
 
-          <ion-list id="labels-list">
-            <ion-list-header>Labels</ion-list-header>
-
-            <ion-item v-for="(label, index) in labels" lines="none" :key="index">
-              <ion-icon slot="start" :ios="bookmarkOutline" :md="bookmarkSharp"></ion-icon>
-              <ion-label>{{ label }}</ion-label>
-            </ion-item>
-          </ion-list>
         </ion-content>
       </ion-menu>
       <ion-router-outlet id="main-content"></ion-router-outlet>
@@ -49,45 +41,42 @@ import { ref } from 'vue';
 import {
   archiveOutline,
   archiveSharp,
-  bookmarkOutline,
-  bookmarkSharp,
   heartOutline,
   heartSharp,
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
+  homeSharp,
+  cubeSharp,
   trashOutline,
   trashSharp,
   warningOutline,
   warningSharp,
+  peopleSharp
 } from 'ionicons/icons';
 
 const selectedIndex = ref(0);
 const appPages = [
   {
+    title: 'Home',
+    url: '/folder/Inbox',
+    iosIcon: homeSharp,
+    mdIcon: homeSharp,
+  },
+  {
     title: 'Lista de usuarios',
     url: '/users-list',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    iosIcon: peopleSharp,
+    mdIcon: peopleSharp,
   },
   {
     title: 'Preferencias / Storage',
     url: '/preferences',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
-  },
-  {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp,
+    iosIcon: cubeSharp,
+    mdIcon: cubeSharp,
   },
   {
     title: 'Outbox',
     url: '/folder/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp,
+    iosIcon: cubeSharp,
+    mdIcon: cubeSharp,
   },
   {
     title: 'Favorites',
