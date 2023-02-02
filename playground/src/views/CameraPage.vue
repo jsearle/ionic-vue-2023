@@ -9,7 +9,13 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button>Abrir la cámara</ion-button>
+      <ion-button @click="abreCamara()">Abrir la cámara</ion-button>
+      <ion-card>
+        <ion-card-content>
+          {{foto}}
+          <ion-img :src="foto" />
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -24,8 +30,12 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
+  IonCard,
+  IonCardContent,
+  IonImg
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import useCamera from "../composables/useCamera";
 
 export default defineComponent({
   name: "CameraPage",
@@ -38,9 +48,25 @@ export default defineComponent({
     IonToolbar,
     IonButtons,
     IonMenuButton,
+    IonCard,
+    IonCardContent,
+    IonImg
+  },
+  data(){
+    return {
+      foto: '' as any
+    }
+  },
+  methods:{
+    async abreCamara(){
+      this.foto = await this.cam.takePicture();
+    }
   },
   setup() {
-    console.log("test");
+    const cam = useCamera()
+    return {
+      cam
+    }
   },
 });
 </script>

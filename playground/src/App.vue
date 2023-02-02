@@ -51,6 +51,8 @@ import {
   warningSharp,
   peopleSharp
 } from 'ionicons/icons';
+import { defineCustomElements } from '@ionic/pwa-elements/loader'
+defineCustomElements(window)
 
 const selectedIndex = ref(0);
 const appPages = [
