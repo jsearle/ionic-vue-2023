@@ -7,15 +7,16 @@ import CameraPage from '../views/CameraPage.vue'
 import GPSPage from '../views/GPSPage.vue'
 import MotionPage from '../views/MotionPage.vue'
 import CustomCamPage from '../views/CustomCamPage.vue'
+import HomePage from '../views/HomePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/folder/Inbox'
+    redirect: '/home'
   },
   {
-    path: '/folder/:id',
-    component: () => import ('../views/FolderPage.vue')
+    path: '/home',
+    component: HomePage
   },
   {
     path: '/users-list',

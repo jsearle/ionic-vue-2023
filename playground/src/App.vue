@@ -39,17 +39,14 @@ import {
 } from '@ionic/vue';
 import { ref } from 'vue';
 import {
-  archiveOutline,
-  archiveSharp,
-  heartOutline,
-  heartSharp,
   homeSharp,
   cubeSharp,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
-  peopleSharp
+  peopleSharp,
+  documentsSharp,
+  cameraSharp,
+  mapSharp,
+  aperture,
+  cameraOutline
 } from 'ionicons/icons';
 import { defineCustomElements } from '@ionic/pwa-elements/loader'
 defineCustomElements(window)
@@ -58,7 +55,7 @@ const selectedIndex = ref(0);
 const appPages = [
   {
     title: 'Home',
-    url: '/folder/Inbox',
+    url: '/home',
     iosIcon: homeSharp,
     mdIcon: homeSharp,
   },
@@ -77,32 +74,32 @@ const appPages = [
   {
     title: 'SQLite',
     url: '/db',
-    iosIcon: cubeSharp,
-    mdIcon: cubeSharp,
+    iosIcon: documentsSharp,
+    mdIcon: documentsSharp,
   },
   {
     title: 'Cámara nativa',
     url: '/camera',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
+    iosIcon: cameraSharp,
+    mdIcon: cameraSharp,
   },
   {
     title: 'GPS',
     url: '/gps',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
+    iosIcon: mapSharp,
+    mdIcon: mapSharp,
   },
   {
     title: 'Motion',
     url: '/motion',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
+    iosIcon: aperture,
+    mdIcon: aperture,
   },
   {
     title: 'Cámara especial',
     url: '/custom-cam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
+    iosIcon: cameraOutline,
+    mdIcon: cameraOutline,
   },
 ];
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
