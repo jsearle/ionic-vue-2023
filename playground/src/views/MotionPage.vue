@@ -9,7 +9,8 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button>Botón</ion-button>
+      <ion-button @click="motion.capturarAceleracion()">Botón</ion-button>
+      {{motion.data}}
     </ion-content>
   </ion-page>
 </template>
@@ -25,7 +26,8 @@ import {
   IonButtons,
   IonMenuButton,
 } from "@ionic/vue";
-import { defineComponent } from "vue";
+import { defineComponent } from "vue"
+import useMotion from "../composables/useMotion";
 
 export default defineComponent({
   name: "MotionPage",
@@ -40,7 +42,10 @@ export default defineComponent({
     IonMenuButton,
   },
   setup() {
-    console.log("test");
+    const motion = useMotion()
+    return {
+      motion
+    }
   },
 });
 </script>
