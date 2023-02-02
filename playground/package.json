@@ -9,6 +9,7 @@
     "go": "npm run build && npx capacitor sync"
   },
   "dependencies": {
+    "@capacitor-community/sqlite": "^4.6.1-2",
     "@capacitor/android": "4.6.2",
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "^4.6.2",
@@ -22,7 +23,8 @@
     "ionicons": "^6.0.3",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.21",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-sqlite-hook": "^3.0.3"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.6.2",

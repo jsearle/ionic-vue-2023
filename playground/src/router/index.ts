@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import UsersListPage from '../views/UsersListPage.vue'
 import PreferencesPage from '../views/PreferencesPage.vue'
+import DatabasePage from '../views/DatabasePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/preferences',
     name: 'Preferencias',
     component: PreferencesPage
+  },
+  {
+    path: '/db',
+    name: 'Basses de datos',
+    component: DatabasePage
   }
 ]
 

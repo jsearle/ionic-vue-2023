@@ -73,8 +73,8 @@ const appPages = [
     mdIcon: cubeSharp,
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
+    title: 'SQLite',
+    url: '/db',
     iosIcon: cubeSharp,
     mdIcon: cubeSharp,
   },

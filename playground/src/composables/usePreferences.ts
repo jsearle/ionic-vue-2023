@@ -12,7 +12,7 @@ export default function usePreferences() {
   const savePrefs = async (newPrefs:any) => {
     // llamamos a Preferences, que es el plugin de capacitor
     Preferences.set({key: 'prefs', value: JSON.stringify(newPrefs)})
-    prefs.name = newPrefs.name 
+    prefs.name = newPrefs.name
     prefs.email = newPrefs.email
     prefs.token = newPrefs.token
   }

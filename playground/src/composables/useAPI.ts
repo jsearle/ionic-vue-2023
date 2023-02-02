@@ -36,7 +36,7 @@ export default function useAPI(){
       {method: 'POST',
       headers:{
         // Gracias Jorge por el input!! 
-        'Accept': 'application/JSON',
+        'Accept': 'application/json',
         'Content-type':'application/json'
       },
       body:body}).then(result => result.json())
