@@ -4,7 +4,7 @@ import UsersListPage from '../views/UsersListPage.vue'
 import PreferencesPage from '../views/PreferencesPage.vue'
 import DatabasePage from '../views/DatabasePage.vue'
 import CameraPage from '../views/CameraPage.vue'
-
+import GPSPage from '../views/GPSPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +34,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/camera',
     name: 'Cámara',
     component: CameraPage
+  },
+  {
+    path: '/gps',
+    name: 'GPS',
+    component: GPSPage
   }
 ]
 

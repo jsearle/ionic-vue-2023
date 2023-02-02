@@ -87,8 +87,8 @@ const appPages = [
     mdIcon: heartSharp,
   },
   {
-    title: 'Archived',
-    url: '/folder/Archived',
+    title: 'GPS',
+    url: '/gps',
     iosIcon: archiveOutline,
     mdIcon: archiveSharp,
   },
