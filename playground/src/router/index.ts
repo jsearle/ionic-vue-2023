@@ -8,6 +8,7 @@ import GPSPage from '../views/GPSPage.vue'
 import MotionPage from '../views/MotionPage.vue'
 import CustomCamPage from '../views/CustomCamPage.vue'
 import HomePage from '../views/HomePage.vue'
+import FormPage from '../views/FormPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -52,6 +53,11 @@ const routes: Array<RouteRecordRaw> = [
      path: '/custom-cam',
      name: 'Camara especial',
      component: CustomCamPage
+   },
+   {
+     path: '/forms',
+     name: 'Formularios',
+     component: FormPage
    },
   
 ]

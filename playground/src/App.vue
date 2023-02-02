@@ -60,7 +60,7 @@ const appPages = [
     mdIcon: homeSharp,
   },
   {
-    title: 'Lista de usuarios',
+    title: 'Llamadas API/VeeValidate',
     url: '/users-list',
     iosIcon: peopleSharp,
     mdIcon: peopleSharp,
@@ -98,6 +98,12 @@ const appPages = [
   {
     title: 'Cámara especial',
     url: '/custom-cam',
+    iosIcon: cameraOutline,
+    mdIcon: cameraOutline,
+  },
+  {
+    title: 'Formularios',
+    url: '/forms',
     iosIcon: cameraOutline,
     mdIcon: cameraOutline,
   },
