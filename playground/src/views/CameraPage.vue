@@ -63,7 +63,9 @@ export default defineComponent({
     }
   },
   setup() {
+    // llamamos a la composable function
     const cam = useCamera()
+    // ponemos el resultado al alcance del componente
     return {
       cam
     }
