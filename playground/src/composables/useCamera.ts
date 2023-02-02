@@ -10,8 +10,10 @@ export default function useCamera(){
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Uri,
-      source: CameraSource.Photos,
-      direction: CameraDirection.Rear
+      //source: CameraSource.Photos,
+      direction: CameraDirection.Rear,
+      promptLabelPhoto: 'Elegir desde la biblioteca',
+      promptLabelPicture: 'Hacer una foto'
     });
   
     // obtenemos la propiedad webPath para poder usarla en el dom más tarde
