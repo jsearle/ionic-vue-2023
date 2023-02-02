@@ -9,8 +9,29 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button @click="motion.capturarAceleracion()">Botón</ion-button>
-      {{motion.data}}
+      <ion-button @click="motion.capturarAceleracion()">Activar sensores de movimiento</ion-button>
+      <div v-if="motion.data.aceleracion && motion.data.orientacion">
+        <ion-item><ion-label>Aceleración: <br />
+            {{ motion.data.aceleracion.x }} <br />
+            {{ motion.data.aceleracion.y }} <br />
+            {{ motion.data.aceleracion.z }}
+          </ion-label>
+        </ion-item>
+        <ion-item ><ion-label >Gravedad: <br />
+            {{ motion.data.gravity.x }} <br />
+            {{ motion.data.gravity.y }} <br />
+            {{ motion.data.gravity.z }}
+          </ion-label></ion-item
+        >
+        <ion-item
+          ><ion-label
+            >Orientacion: <br />
+            {{ motion.data.orientacion.alpha }} <br />
+            {{ motion.data.orientacion.beta }} <br />
+            {{ motion.data.orientacion.gamma }}
+          </ion-label></ion-item
+        >
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -25,8 +46,10 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
+  IonItem,
+  IonLabel,
 } from "@ionic/vue";
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 import useMotion from "../composables/useMotion";
 
 export default defineComponent({
@@ -40,12 +63,14 @@ export default defineComponent({
     IonToolbar,
     IonButtons,
     IonMenuButton,
+    IonItem,
+    IonLabel,
   },
   setup() {
-    const motion = useMotion()
+    const motion = useMotion();
     return {
-      motion
-    }
+      motion,
+    };
   },
 });
 </script>

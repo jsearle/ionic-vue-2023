@@ -11,8 +11,8 @@ export default function useMotion() {
 
   const updateAccel = (event:any) => {
     console.log('Device motion accel:', event)
-    data.aceleracion = {x: event.acceleration.x, y: event.acceleration.x, z: event.acceleration.x}
-    data.gravity = {x: event.accelerationIncludingGravity.x, y: event.accelerationIncludingGravity.x, z: event.accelerationIncludingGravity.x}
+    data.aceleracion = {x: event.acceleration.x, y: event.acceleration.y, z: event.acceleration.z}
+    data.gravity = {x: event.accelerationIncludingGravity.x, y: event.accelerationIncludingGravity.y, z: event.accelerationIncludingGravity.z}
   }
 
   const updateOrientation = (event:any) => {
