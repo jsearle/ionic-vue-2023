@@ -9,6 +9,7 @@ import MotionPage from '../views/MotionPage.vue'
 import CustomCamPage from '../views/CustomCamPage.vue'
 import HomePage from '../views/HomePage.vue'
 import FormPage from '../views/FormPage.vue'
+import NewPage from '../views/NewPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -58,6 +59,11 @@ const routes: Array<RouteRecordRaw> = [
      path: '/forms',
      name: 'Formularios',
      component: FormPage
+   },
+   {
+     path: '/grid',
+     name: 'Grids',
+     component: NewPage
    },
   
 ]

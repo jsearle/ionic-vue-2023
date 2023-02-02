@@ -46,7 +46,9 @@ import {
   cameraSharp,
   mapSharp,
   aperture,
-  cameraOutline
+  cameraOutline,
+  appsSharp,
+  create
 } from 'ionicons/icons';
 import { defineCustomElements } from '@ionic/pwa-elements/loader'
 defineCustomElements(window)
@@ -58,6 +60,18 @@ const appPages = [
     url: '/home',
     iosIcon: homeSharp,
     mdIcon: homeSharp,
+  },
+  {
+    title: 'Grid y listas',
+    url: '/grid',
+    iosIcon: appsSharp,
+    mdIcon: appsSharp,
+  },
+  {
+    title: 'Formularios',
+    url: '/forms',
+    iosIcon: create,
+    mdIcon: create,
   },
   {
     title: 'Llamadas API/VeeValidate',
@@ -98,12 +112,6 @@ const appPages = [
   {
     title: 'Cámara especial',
     url: '/custom-cam',
-    iosIcon: cameraOutline,
-    mdIcon: cameraOutline,
-  },
-  {
-    title: 'Formularios',
-    url: '/forms',
     iosIcon: cameraOutline,
     mdIcon: cameraOutline,
   },
