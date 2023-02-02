@@ -79,8 +79,8 @@ const appPages = [
     mdIcon: cubeSharp,
   },
   {
-    title: 'Favorites',
-    url: '/folder/Favorites',
+    title: 'Cámara nativa',
+    url: '/camera',
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },

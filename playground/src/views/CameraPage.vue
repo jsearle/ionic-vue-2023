@@ -5,11 +5,11 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Título de la página</ion-title>
+        <ion-title>Capacitor Camera</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button>Botón</ion-button>
+      <ion-button>Abrir la cámara</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -28,7 +28,7 @@ import {
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Page",
+  name: "CameraPage",
   components: {
     IonButton,
     IonContent,

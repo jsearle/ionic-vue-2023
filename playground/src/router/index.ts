@@ -3,6 +3,8 @@ import { RouteRecordRaw } from 'vue-router';
 import UsersListPage from '../views/UsersListPage.vue'
 import PreferencesPage from '../views/PreferencesPage.vue'
 import DatabasePage from '../views/DatabasePage.vue'
+import CameraPage from '../views/CameraPage.vue'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,8 +27,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/db',
-    name: 'Basses de datos',
+    name: 'Bases de datos',
     component: DatabasePage
+  },
+  {
+    path: '/camera',
+    name: 'Cámara',
+    component: CameraPage
   }
 ]
 
