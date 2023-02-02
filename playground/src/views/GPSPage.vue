@@ -9,10 +9,13 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button @click="obtenerPosicion()">Obtener posición</ion-button>
+      <p style="text-align:center">
+      <ion-button @click="obtenerPosicion()" > <ion-spinner name="dots" v-if="gps.data.isLoading"></ion-spinner> <span v-else>Obtener posición</span></ion-button><br>
       <ion-button @click="iniciarSeguimiento()">Iniciar</ion-button>
       <ion-button @click="pararSeguimiento()">Parar</ion-button>
+      </p>
       <hr />
+      
       <ion-item><ion-label>Latitud: {{gps.data.coords.latitude}} </ion-label></ion-item>
       <ion-item><ion-label>Longitud: {{gps.data.coords.longitude}} </ion-label></ion-item>
       <ion-item><ion-label>Altitud: {{gps.data.coords.altitude}} </ion-label></ion-item>
@@ -33,7 +36,8 @@ import {
   IonButtons,
   IonMenuButton,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonSpinner
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import useGPS from "../composables/useGPS";
@@ -50,7 +54,8 @@ export default defineComponent({
     IonButtons,
     IonMenuButton,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonSpinner
   },
   data(){
     return {

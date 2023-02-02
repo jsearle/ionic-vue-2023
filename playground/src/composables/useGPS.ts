@@ -4,14 +4,18 @@ import {reactive} from 'vue'
 export default function useLocation(){
   let watchId = null as any
   const data = reactive({
-    coords: {} as any
+    coords: {} as any,
+    isLoading: false
   })
   
+
   const getCurrentPosition = async () => {
+    data.isLoading = true
     const coordinates = await Geolocation.getCurrentPosition({
       enableHighAccuracy: true
     })
     data.coords = coordinates.coords
+    data.isLoading = false
     return coordinates.coords
   }
   const updatePosition = (newPosition:any, err: any) => {

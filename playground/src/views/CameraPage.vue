@@ -9,11 +9,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-button @click="abreCamara()">Abrir la cámara</ion-button>
+      <ion-fab slot="fixed" horizontal="center" vertical="bottom">
+        <ion-fab-button @click="abreCamara()">
+          <ion-icon :icon="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
       <ion-card>
         <ion-card-content>
           {{foto}}
-          <ion-img :src="foto" />
+          <ion-img v-if="foto" :src="foto" />
+          <p v-else> Pulsa el botón de la cámara para tomar una foto. </p>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -22,7 +27,6 @@
 
 <script lang="ts">
 import {
-  IonButton,
   IonContent,
   IonHeader,
   IonPage,
@@ -32,15 +36,18 @@ import {
   IonMenuButton,
   IonCard,
   IonCardContent,
-  IonImg
+  IonImg,
+  IonFab,
+  IonFabButton,
+  IonIcon
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import useCamera from "../composables/useCamera";
+import {camera} from "ionicons/icons";
 
 export default defineComponent({
   name: "CameraPage",
   components: {
-    IonButton,
     IonContent,
     IonHeader,
     IonPage,
@@ -50,7 +57,10 @@ export default defineComponent({
     IonMenuButton,
     IonCard,
     IonCardContent,
-    IonImg
+    IonImg,
+    IonFab,
+    IonFabButton,
+    IonIcon
   },
   data(){
     return {
@@ -67,7 +77,8 @@ export default defineComponent({
     const cam = useCamera()
     // ponemos el resultado al alcance del componente
     return {
-      cam
+      cam,
+      camera
     }
   },
 });
