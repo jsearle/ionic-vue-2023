@@ -5,6 +5,7 @@ import PreferencesPage from '../views/PreferencesPage.vue'
 import DatabasePage from '../views/DatabasePage.vue'
 import CameraPage from '../views/CameraPage.vue'
 import GPSPage from '../views/GPSPage.vue'
+import MotionPage from '../views/MotionPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -39,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/gps',
     name: 'GPS',
     component: GPSPage
+   },
+  {
+    path: '/motion',
+    name: 'Motion',
+    component: MotionPage
   }
 ]
 

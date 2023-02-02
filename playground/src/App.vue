@@ -93,8 +93,8 @@ const appPages = [
     mdIcon: archiveSharp,
   },
   {
-    title: 'Trash',
-    url: '/folder/Trash',
+    title: 'Motion',
+    url: '/motion',
     iosIcon: trashOutline,
     mdIcon: trashSharp,
   },
