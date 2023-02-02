@@ -11,10 +11,8 @@
       <ion-button @click="obtenerUsers()">Obtener usuarios</ion-button>
       <ion-list>
         <ion-item v-for="user in users" :key="user.id">
-          <ion-label>{{ user }}</ion-label>
+          <ion-label><h2>{{ user.name }}</h2> <p>Edad: {{ user.age }}</p></ion-label>
         </ion-item>
-
-        {{ users }}
       </ion-list>
     </ion-content>
   </ion-page>
