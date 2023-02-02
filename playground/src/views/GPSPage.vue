@@ -32,6 +32,8 @@ import {
   IonToolbar,
   IonButtons,
   IonMenuButton,
+  IonItem,
+  IonLabel
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import useGPS from "../composables/useGPS";
@@ -47,6 +49,8 @@ export default defineComponent({
     IonToolbar,
     IonButtons,
     IonMenuButton,
+    IonItem,
+    IonLabel
   },
   data(){
     return {
