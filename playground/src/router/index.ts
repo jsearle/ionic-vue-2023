@@ -6,6 +6,7 @@ import DatabasePage from '../views/DatabasePage.vue'
 import CameraPage from '../views/CameraPage.vue'
 import GPSPage from '../views/GPSPage.vue'
 import MotionPage from '../views/MotionPage.vue'
+import CustomCamPage from '../views/CustomCamPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -41,11 +42,17 @@ const routes: Array<RouteRecordRaw> = [
     name: 'GPS',
     component: GPSPage
    },
-  {
-    path: '/motion',
-    name: 'Motion',
-    component: MotionPage
-  }
+   {
+     path: '/motion',
+     name: 'Motion',
+     component: MotionPage
+   },
+   {
+     path: '/custom-cam',
+     name: 'Camara especial',
+     component: CustomCamPage
+   },
+  
 ]
 
 const router = createRouter({

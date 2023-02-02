@@ -9,6 +9,7 @@
     "go": "npm run build && npx capacitor sync && npx capacitor run android"
   },
   "dependencies": {
+    "@capacitor-community/camera-preview": "^4.0.0",
     "@capacitor-community/sqlite": "^4.6.1-2",
     "@capacitor/android": "4.6.2",
     "@capacitor/app": "4.1.1",

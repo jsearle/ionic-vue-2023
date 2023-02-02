@@ -99,8 +99,8 @@ const appPages = [
     mdIcon: trashSharp,
   },
   {
-    title: 'Spam',
-    url: '/folder/Spam',
+    title: 'Cámara especial',
+    url: '/custom-cam',
     iosIcon: warningOutline,
     mdIcon: warningSharp,
   },
