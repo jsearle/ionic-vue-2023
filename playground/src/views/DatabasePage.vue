@@ -2,6 +2,9 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
         <ion-title>Base de datos SQLite</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -49,7 +52,9 @@ import {
   IonLabel,
   IonInput,
   IonCard,
-  IonCardContent
+  IonCardContent,
+  IonButtons,
+  IonMenuButton
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import useDatabase from "../composables/useDatabase";
@@ -68,7 +73,9 @@ export default defineComponent({
     IonLabel,
     IonInput,
     IonCard,
-    IonCardContent
+    IonCardContent,
+    IonButtons,
+    IonMenuButton
   },
   data() {
     return {
