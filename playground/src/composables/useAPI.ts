@@ -31,10 +31,13 @@ export default function useAPI(){
   }
 
   const loginUser = async (email:string, clave:string) => {
+    // en primer lugar creamos un string JSON con los datos del usuario
     const body = JSON.stringify({email:email, password:clave})
+    // hacemos la petición POST con los datos del usuario
     const response = await fetch(API_USER_LOGIN, 
       {method: 'POST',
       headers:{
+        // importante añadir estas dos cabeceras
         // Gracias Jorge por el input!! 
         'Accept': 'application/json',
         'Content-type':'application/json'

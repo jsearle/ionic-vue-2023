@@ -12,6 +12,7 @@ export default function useCamera(){
       resultType: CameraResultType.Uri,
       //source: CameraSource.Photos,
       direction: CameraDirection.Rear,
+      // traducciones para los textos de los botones
       promptLabelPhoto: 'Elegir desde la biblioteca',
       promptLabelPicture: 'Hacer una foto'
     });

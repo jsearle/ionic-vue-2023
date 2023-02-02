@@ -2,30 +2,42 @@ import { Geolocation } from '@capacitor/geolocation';
 import {reactive} from 'vue'
 
 export default function useLocation(){
+  // guardamos un identificador para poder parar la escucha
   let watchId = null as any
+
+  // la variable reactiva que contendrá los datos
   const data = reactive({
-    coords: {} as any,
+    coords: {} as any, // usamos "as any" para que typescript no infiera un objeto vacío
     isLoading: false
   })
   
-
+  // función para obtener la posición actual del usuario
   const getCurrentPosition = async () => {
+    // ponemos el estado "cargando" a true para que aparezca el spinner en el frontend
     data.isLoading = true
+    // llamada a la API de geolocalización
     const coordinates = await Geolocation.getCurrentPosition({
       enableHighAccuracy: true
     })
+    // guardamos los datos en las variables reactivas
     data.coords = coordinates.coords
     data.isLoading = false
     return coordinates.coords
   }
+
+  // cada vez que la posición cambie, se ejecutará esta función
   const updatePosition = (newPosition:any, err: any) => {
     console.log('posición actualizada', newPosition, err)
     data.coords = newPosition.coords
   }
 
+  // iniciar la escucha de la posición
   const watchPosition = async () => {
+    // cada vez que detecte un cambio de posición llamaremos a updatePosition
     watchId = await Geolocation.watchPosition({ enableHighAccuracy: true,  }, updatePosition)
   }
+
+  // parar la escucha de la posición
   const stopWatch = () => {
     Geolocation.clearWatch({ id: watchId })
   }
@@ -42,6 +54,7 @@ export default function useLocation(){
     return d
   }
   
+  // función para convertir grados a radianes
   const deg2rad = (deg: number) => {
     return deg * (Math.PI/180)
   }
