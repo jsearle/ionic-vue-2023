@@ -37,6 +37,16 @@
           <ion-col size="8">
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col size="2">
+          </ion-col>
+          <ion-col size="8">
+            <div class="linea" v-if="motion.data && motion.data.orientacion" :style="'transform: rotate(' + motion.data.orientacion.alpha + 'deg)'"></div>
+          </ion-col>
+          <ion-col>
+            <div class="linea" :style="'transform: rotate(' + rumbo + 'deg)'"></div>
+          </ion-col>
+        </ion-row>
       </ion-grid>
       <ion-card v-if="!camActiva && base64Foto != ''">
         <ion-card-content>
@@ -175,5 +185,12 @@ ion-col{
 }
 .align-right{
   text-align: right;
+}
+.linea{
+  width: 3px;
+  height: 50px;
+  background-color: greenyellow;
+  box-shadow: #000000 1px 1px 5px;
+  transition:0.7s;
 }
 </style>
