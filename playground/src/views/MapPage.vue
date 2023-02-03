@@ -15,6 +15,9 @@
         </ion-card-content>
       </ion-card>
       <ion-button expand="block" @click="cargarMapa()">Cargar mapa</ion-button>
+      <ion-button expand="block" @click="irBarcelona()">Ir a Barcelona</ion-button>
+      <ion-button @click="acercar()">+</ion-button>
+      <ion-button @click="alejar()">-</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -48,6 +51,18 @@ const cargarMapa = () => {
   map.createMap(element, center, zoom)
 }
 
+const irBarcelona = () => {
+  const center = { lat: 41.385063, lng: 2.173404 }
+  const zoom = 12
+  map.mapCenter.coords = center
+  map.mapCenter.zoom = zoom
+}
+const acercar = () => {
+  map.mapCenter.zoom = map.mapCenter.zoom + 1
+}
+const alejar = () => {
+  map.mapCenter.zoom = map.mapCenter.zoom - 1
+}
 
 
 </script>
