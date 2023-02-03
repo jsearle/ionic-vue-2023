@@ -11,6 +11,7 @@ import HomePage from '../views/HomePage.vue'
 import FormPage from '../views/FormPage.vue'
 import NewPage from '../views/NewPage.vue'
 import SensorsPage from '../views/SensorsPage.vue'
+import CompositionPage from '../views/CompositionPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -60,6 +61,11 @@ const routes: Array<RouteRecordRaw> = [
      path: '/forms',
      name: 'Formularios',
      component: FormPage
+   },
+   {
+     path: '/composition',
+     name: 'Grids Comp',
+     component: CompositionPage
    },
    {
      path: '/grid',

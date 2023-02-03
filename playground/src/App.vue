@@ -63,8 +63,14 @@ const appPages = [
     mdIcon: homeSharp,
   },
   {
-    title: 'Grid y listas',
+    title: 'Grid (Options API)',
     url: '/grid',
+    iosIcon: appsSharp,
+    mdIcon: appsSharp,
+  },
+  {
+    title: 'Grid (Composition API)',
+    url: '/composition',
     iosIcon: appsSharp,
     mdIcon: appsSharp,
   },

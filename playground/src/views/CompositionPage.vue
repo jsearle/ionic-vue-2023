@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Grid (Options API)</ion-title>
+        <ion-title>Grid (Composition API)</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -33,13 +33,13 @@
       </ion-grid>
       <ion-list>
         <ion-list-header>Título</ion-list-header>
-        <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/dos')">
+        <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/camera')">
           <ion-avatar slot="start">
             <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
           </ion-avatar>
           <ion-label>{{fruta}}</ion-label>
         </ion-item>
-        <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/dos')">
+        <ion-item v-for="(fruta, index) in elementosLista" :key="index" :button="true" @click="()=>router.push('/database')">
           <ion-thumbnail slot="start">
             <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
           </ion-thumbnail>
@@ -51,7 +51,7 @@
           </ion-thumbnail>
         </ion-item>
         <ion-item-sliding>
-          <ion-item :button="true" @click="()=>router.push('/dos')">
+          <ion-item :button="true" @click="()=>router.push('/home')">
             <ion-thumbnail slot="start">
               <ion-img src="https://thispersondoesnotexist.com/image" alt="" />
             </ion-thumbnail>
@@ -69,7 +69,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script setup>
 import {
   IonPage,
   IonHeader,
@@ -99,60 +99,18 @@ import {
   IonButtons,
   IonMenuButton
 } from "@ionic/vue";
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import { useRouter } from 'vue-router'
 import { trashOutline, basketballOutline } from 'ionicons/icons'
 
-export default defineComponent({
-  name: "NewPage",
-  components: {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonCard,
-    IonCardContent,
-    IonButton,
-    IonGrid, 
-    IonRow,
-    IonCol,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardHeader,
-    IonList,
-    IonListHeader,
-    IonItem,
-    IonLabel,
-    IonAvatar,
-    IonThumbnail,
-    IonImg,
-    IonItemSliding,
-    IonItemOptions,
-    IonItemOption,
-    IonIcon,
-    IonButtons,
-    IonMenuButton
-  },
-  data(){
-    return{
-      elementosLista: ['Naranjas', 'Peras', 'Manzanas', 'Plátanos', 'Fresas']
-    }
-  },
-  methods: {
-    alerta() {
-      alert("Click!");
-    },
-  },
-  setup(){
-    const router = useRouter()
-    return {
-      router,
-      trashOutline,
-      basketballOutline
-    }
-  }
-});
+const elementosLista = reactive(['Naranjas', 'Peras', 'Manzanas', 'Plátanos', 'Fresas'])
+
+const alerta = () => {
+  alert("Click!")
+}
+
+const router = useRouter()
+
 </script>
 
 <style scoped>
