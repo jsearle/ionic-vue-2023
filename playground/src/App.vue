@@ -49,7 +49,8 @@ import {
   cameraOutline,
   appsSharp,
   create,
-  bulb
+  bulb,
+  map
 } from 'ionicons/icons';
 import { defineCustomElements } from '@ionic/pwa-elements/loader'
 defineCustomElements(window)
@@ -127,6 +128,12 @@ const appPages = [
     url: '/sensei',
     iosIcon: bulb,
     mdIcon: bulb,
+  },
+  {
+    title: 'Mapa reactivo',
+    url: '/map',
+    iosIcon: map,
+    mdIcon: map,
   },
 ];
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

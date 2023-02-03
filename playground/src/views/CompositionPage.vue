@@ -99,7 +99,7 @@ import {
   IonButtons,
   IonMenuButton
 } from "@ionic/vue";
-import { defineComponent, reactive } from "vue";
+import { reactive } from "vue";
 import { useRouter } from 'vue-router'
 import { trashOutline, basketballOutline } from 'ionicons/icons'
 

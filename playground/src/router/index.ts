@@ -12,6 +12,7 @@ import FormPage from '../views/FormPage.vue'
 import NewPage from '../views/NewPage.vue'
 import SensorsPage from '../views/SensorsPage.vue'
 import CompositionPage from '../views/CompositionPage.vue'
+import MapPage from '../views/MapPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -76,6 +77,11 @@ const routes: Array<RouteRecordRaw> = [
      path: '/sensei',
      name: 'Native Sensors',
      component: SensorsPage
+   },
+   {
+     path: '/map',
+     name: 'Mapa',
+     component: MapPage
    },
   
 ]
