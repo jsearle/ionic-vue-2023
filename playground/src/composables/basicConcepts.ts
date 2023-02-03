@@ -99,3 +99,40 @@ const getDatosPromesa = () => {
 // el tipo de resultado es una promesa
 // para obtener el resultado de la promesa, usamos el método then
 const resultado = getDatosPromesa().then(respuesta => console.log(respuesta))
+
+
+/*
+// Listado de comandos que hemos usado a lo largo del curso:
+
+npm install -g @vue/cli
+Este comando instala el CLI de Vue de forma global en nuestro equipo.
+
+vue create demo
+Este comando crea un nuevo proyecto de Vue con el nombre demo. Te conducirá por una serie de pasos
+
+code .
+Si estás en una carpeta de proyecto, este comando abrirá el proyecto en VS Code.
+
+npm run serve
+Este comando ejecuta el proyecto en modo desarrollo. Se puede acceder a la aplicación en http://localhost:8080
+
+npm run build
+Este comando crea una versión de producción de la aplicación.
+
+npm install XXX
+este comando instala el paquete XXX en el proyecto.
+
+npm i XXX
+Este comando es una abreviación de npm install XXX
+
+npm i -g @ionic/cli
+Este comando instala el CLI de Ionic de forma global en nuestro equipo.
+
+ionic start demo
+este comando crea un nuevo proyecto de Ionic con el nombre demo.
+
+
+
+
+
+*/
