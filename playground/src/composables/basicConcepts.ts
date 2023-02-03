@@ -129,10 +129,50 @@ npm i -g @ionic/cli
 Este comando instala el CLI de Ionic de forma global en nuestro equipo.
 
 ionic start demo
-este comando crea un nuevo proyecto de Ionic con el nombre demo.
+este comando crea un nuevo proyecto de Ionic con el nombre demo. Os conducirá por una serie de pasos.
+Elegid la opción de plantilla que queráis y el entorno VUE
+
+ionic serve
+Este comando ejecuta el proyecto en modo desarrollo. Se puede acceder a la aplicación en http://localhost:8100
+
+npx cap sync
+Este comando sincroniza los plugins de Capacitor con el proyecto de Ionic y copia los archivos del build
+
+npx cap copy
+Este comando copia los archivos de la aplicación de Ionic a la carpeta de Capacitor. Ojo que este comando no copia los archivos del build
+
+npx cap open android
+Este comando abre el proyecto de Android en Android Studio
+
+npx cap run android
+Este comando ejecuta la aplicación en un dispositivo Android conectado
+
+npx cap run android -l
+Este comando ejecuta la aplicación en un dispositivo Android conectado y abre la consola de logs
+
+Atajos en scripts de package.json
+npm run go -> este atajo lo creamos para que hiciese npm run serve, npx cap sync y npx cap run android a la vez:
+npm run build && npx capacitor sync && npx capacitor run android
+
+
+Plugins que hemos usado en el proyecto:
+
+npm install @capacitor/preferences
+npm install @capacitor-community/sqlite
+npm install --save-dev vue-sqlite-hook
+npm install @ionic/pwa-elements
+npm install @capacitor/camera
+npm install @capacitor-community/camera-preview
+npm install @capacitor/geolocation
+npm install @capacitor/splash-screen
+npm install @capacitor/filesystem
 
 
 
+Para crear un plugin propio:
+npm init @capacitor/plugin
+npm run build
+npm install ../ruta/a/carpeta/plugin
 
 
 */
