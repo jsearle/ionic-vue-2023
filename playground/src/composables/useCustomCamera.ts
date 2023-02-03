@@ -12,6 +12,11 @@ export default function useCustomCam(){
     }
     CameraPreview.start(cameraPreviewOptions)
   }
+
+
+  const stopCam = () => {
+    CameraPreview.stop()
+  }
   // capturamos un fotograma especificando la calidad y el tamaño
   const capture = async () => {
     const cameraPreviewOptions: CameraPreviewPictureOptions = {
@@ -27,6 +32,7 @@ export default function useCustomCam(){
 
   return {
     startCam,
+    stopCam,
     capture
   }
 
