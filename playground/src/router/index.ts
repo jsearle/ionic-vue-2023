@@ -10,6 +10,7 @@ import CustomCamPage from '../views/CustomCamPage.vue'
 import HomePage from '../views/HomePage.vue'
 import FormPage from '../views/FormPage.vue'
 import NewPage from '../views/NewPage.vue'
+import SensorsPage from '../views/SensorsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -64,6 +65,11 @@ const routes: Array<RouteRecordRaw> = [
      path: '/grid',
      name: 'Grids',
      component: NewPage
+   },
+   {
+     path: '/sensei',
+     name: 'Native Sensors',
+     component: SensorsPage
    },
   
 ]

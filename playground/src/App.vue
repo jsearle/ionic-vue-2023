@@ -48,7 +48,8 @@ import {
   aperture,
   cameraOutline,
   appsSharp,
-  create
+  create,
+  bulb
 } from 'ionicons/icons';
 import { defineCustomElements } from '@ionic/pwa-elements/loader'
 defineCustomElements(window)
@@ -114,6 +115,12 @@ const appPages = [
     url: '/custom-cam',
     iosIcon: cameraOutline,
     mdIcon: cameraOutline,
+  },
+  {
+    title: 'Sensores nativos',
+    url: '/sensei',
+    iosIcon: bulb,
+    mdIcon: bulb,
   },
 ];
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
