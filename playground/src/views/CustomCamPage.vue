@@ -17,7 +17,16 @@
           <ion-button @click="activarCamara()">Activar cámara</ion-button>
         </ion-card-content>
       </ion-card>
-      <ion-card v-if="!camActiva">
+      <ion-grid class="overlay" v-if="camActiva">
+        <ion-row>
+          <ion-col size="8">
+          </ion-col>
+          <ion-col size="4" class="align-right">
+            <p>{{fecha}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-card v-if="!camActiva && base64Foto != ''">
         <ion-card-content>
           <ion-img :src="'data:image/jpg;base64, ' + base64Foto"></ion-img>
         </ion-card-content>
@@ -45,7 +54,10 @@ import {
   IonCardContent,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol
 } from "@ionic/vue";
 import { defineComponent } from "vue"
 import useCustomCamera from "../composables/useCustomCamera";
@@ -66,12 +78,16 @@ export default defineComponent({
     IonCardContent,
     IonFab,
     IonFabButton,
-    IonIcon
+    IonIcon,
+    IonGrid,
+    IonRow,
+    IonCol
   },
   data(){
     return{
       camActiva: false,
-      base64Foto: ""
+      base64Foto: "",
+      fecha: ''
     }
   },
   methods:{
@@ -86,7 +102,14 @@ export default defineComponent({
     async capturarFoto(){
       this.base64Foto = await this.cam.capture()
       this.desactivarCamara()
+    },
+    calcularFecha(){
+      const date = new Date()
+      this.fecha = date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
     }
+  },
+  mounted(){
+    setInterval(this.calcularFecha, 1000)
   },
   setup() {
     const cam = useCustomCamera()
@@ -104,5 +127,17 @@ ion-content {
 }
 ion-card-content{
   text-align: center;
+}
+ion-col{
+  /*border:1px solid greenyellow;*/
+}
+.overlay p{
+  color: greenyellow;
+  text-shadow: #000000 1px 1px 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+.align-right{
+  text-align: right;
 }
 </style>
