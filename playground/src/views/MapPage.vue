@@ -16,6 +16,7 @@
       </ion-card>
       <ion-button expand="block" @click="cargarMapa()">Cargar mapa</ion-button>
       <ion-button expand="block" @click="irBarcelona()">Ir a Barcelona</ion-button>
+      <ion-button expand="block" @click="marcador()">Marcador</ion-button>
       <ion-button @click="acercar()">+</ion-button>
       <ion-button @click="alejar()">-</ion-button>
     </ion-content>
@@ -36,7 +37,7 @@ import {
   IonCardContent
 } from "@ionic/vue";
 import useMap from "../composables/useMap";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 
 const map = useMap()
 // busca un elemento con el atributo ref="mapaReactivo". Primero es null y después se le asigna el elemento
@@ -64,6 +65,16 @@ const alejar = () => {
   map.mapCenter.zoom = map.mapCenter.zoom - 1
 }
 
+const marcador = () => {
+  const center = { lat: 41.385063, lng: 2.173404 }
+  map.createMarker(center)
+}
+
+watch(map.isLoaded, (val) => {
+  if (val == true){
+    cargarMapa()
+  }
+})
 
 </script>
 
