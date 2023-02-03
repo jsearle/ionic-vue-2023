@@ -101,7 +101,8 @@ import {
   IonInput,
   IonCardTitle,
   IonCardHeader,
-  alertController
+  alertController,
+  toastController
 } from "@ionic/vue";
 
 // importamos la función para definir un componente en TS
@@ -187,6 +188,23 @@ export default defineComponent({
         })
         // una vez definida la alerta, la mostramos
         miAlerta.present()
+      }
+    },
+    async mostrarToast(){
+      const toast = await toastController.create({
+        message: 'Datos cargados correctamente',
+        duration: 3000,
+        position: 'bottom'
+      });
+
+      await toast.present();
+  }
+  },
+  watch:{
+    'api.isLoading.value' (nuevoValor){
+      console.log('Is Loading ha cambiado')
+      if (nuevoValor == false) {
+        this.mostrarToast()
       }
     }
   },
