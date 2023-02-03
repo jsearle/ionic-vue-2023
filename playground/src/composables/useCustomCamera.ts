@@ -6,7 +6,7 @@ export default function useCustomCam(){
   const startCam = () => {
     const cameraPreviewOptions: CameraPreviewOptions = {
       position: 'rear',
-      height: 500,
+      height: 800,
       width: 500,
       toBack: true
     }
@@ -21,7 +21,7 @@ export default function useCustomCam(){
   const capture = async () => {
     const cameraPreviewOptions: CameraPreviewPictureOptions = {
       quality: 90,
-      height: 500,
+      height: 800,
       width: 500
     }
     const result = await CameraPreview.capture(cameraPreviewOptions)

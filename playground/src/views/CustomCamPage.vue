@@ -19,10 +19,22 @@
       </ion-card>
       <ion-grid class="overlay" v-if="camActiva">
         <ion-row>
-          <ion-col size="8">
+          <ion-col size="4">
+            <p>Lat: {{gps.data.coords.latitude}}</p>
+            <p>Lon: {{gps.data.coords.longitude}}</p>
+            <p>Rumbo: {{rumbo}}</p>
           </ion-col>
-          <ion-col size="4" class="align-right">
+          <ion-col class="align-right">
             <p>{{fecha}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row v-if="motion.data && motion.data.gravity">
+          <ion-col size="4">
+            <p>X: {{prepararNum(motion.data.gravity.x)}}</p>
+            <p>Y: {{prepararNum(motion.data.gravity.y)}}</p>
+            <p>Z: {{prepararNum(motion.data.gravity.z)}}</p>
+          </ion-col>
+          <ion-col size="8">
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -57,11 +69,14 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
+  IonImg
 } from "@ionic/vue";
 import { defineComponent } from "vue"
 import useCustomCamera from "../composables/useCustomCamera";
 import { camera } from "ionicons/icons";
+import useGPS from "../composables/useGPS";
+import useMotion from "../composables/useMotion";
 
 export default defineComponent({
   name: "CustomCamPage",
@@ -81,7 +96,8 @@ export default defineComponent({
     IonIcon,
     IonGrid,
     IonRow,
-    IonCol
+    IonCol,
+    IonImg
   },
   data(){
     return{
@@ -94,10 +110,14 @@ export default defineComponent({
     activarCamara(){
       this.camActiva = true
       this.cam.startCam()
+      this.gps.watchPosition()
+      this.motion.capturarAceleracion()
     },
     desactivarCamara(){
       this.camActiva = false
       this.cam.stopCam()
+      this.gps.stopWatch()
+      this.motion.pararListeners()
     },
     async capturarFoto(){
       this.base64Foto = await this.cam.capture()
@@ -106,6 +126,14 @@ export default defineComponent({
     calcularFecha(){
       const date = new Date()
       this.fecha = date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+    },
+    prepararNum(numero: number) : number {
+      return Math.round(numero/9.8 * 10) / 10
+    }
+  },
+  computed:{
+    rumbo(): number{
+      return Math.round(this.gps.data.coords.heading)
     }
   },
   mounted(){
@@ -113,9 +141,13 @@ export default defineComponent({
   },
   setup() {
     const cam = useCustomCamera()
+    const gps = useGPS()
+    const motion = useMotion()
     return {
       cam,
-      camera
+      camera,
+      gps,
+      motion
     }
   },
 });
@@ -128,14 +160,18 @@ ion-content {
 ion-card-content{
   text-align: center;
 }
+/*
 ion-col{
-  /*border:1px solid greenyellow;*/
+  border:1px solid greenyellow;
 }
+*/
 .overlay p{
   color: greenyellow;
   text-shadow: #000000 1px 1px 5px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .align-right{
   text-align: right;
